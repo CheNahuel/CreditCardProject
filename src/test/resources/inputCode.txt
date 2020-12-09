@@ -1,0 +1,13 @@
+import re
+
+for _ in range(int(input())):
+    num = input()
+
+    pass1 = bool(re.match(r"^[456]\d{15}$", num))
+    pass2 = bool(re.match(r"^[456]\d{3}\-\d{4}\-\d{4}\-\d{4}$", num))
+    num = num.replace("-", "")
+    pass3 = bool(re.match(r"(?!.*(\d)(-?\1){3})", num))
+    if (pass1 or pass2) and pass3:
+        print("Valid")
+    else:
+        print("Invalid")
